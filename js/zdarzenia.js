@@ -39,7 +39,8 @@ function hoverLinks() {
             this.style.color = 'red';
         })
 
-        linki[i].addEventListener('click', function () {
+        linki[i].addEventListener('click', function (e) {
+            e.preventDefault();
             this.style.fontSize = '25px';
         })
     }
@@ -86,3 +87,28 @@ var form = document.getElementById('form');
 //przypisanie funkcji do eventu po samej nazwie (nie uzywamy nawiasow)
 form.addEventListener('click', wypiszDoKonsoli);
 form.removeEventListener('click', wypiszDoKonsoli);
+
+
+var btn = document.getElementById('btn');
+btn.addEventListener('click', function(e){
+    console.log(e.type);
+    e.stopPropagation();
+})
+
+/*window.addEventListener('mousemove', function(e) {
+    var x = e.clientX / 100;
+    var y = e.clientY / 100;
+    
+    var red = document.getElementById('red');
+    var actualX = red.style.left;
+    var actualY...
+})*/
+
+document.querySelector('button').addEventListener('click',function(e) {
+    console.log('kliknales przycisk');
+    e.stopPropagation();
+})
+
+document.body.addEventListener('click',function() {
+    console.log('kliknieto body');
+})
